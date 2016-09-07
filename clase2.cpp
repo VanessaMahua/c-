@@ -143,3 +143,13 @@ int main()
 
    return 0;
 }
+------------------------------------------
+
+    long int num,a=1;
+    cout<<("n?");
+    cin>>num;
+    for(int i=1;i<=num;i++)
+    {
+        cout<<a<<endl;
+        a=a*10+i+1;
+    }
