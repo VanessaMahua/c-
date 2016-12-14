@@ -53,3 +53,55 @@ int main ()
     return 0;
 
 }
+// entero n1, n2,n5 -> n1.sumar(n2)=n5
+class entero
+{
+    int valor;
+    public :
+    void setvalor(int);
+    int getvalor();
+    entero sumar(entero);
+    entero restar(entero);
+    entero cambiarsigno();
+};
+ void entero:: setvalor(int x)
+{
+    valor=x;
+}
+int entero ::  getvalor()
+{
+    return valor;
+}
+entero entero :: sumar(entero x)
+{
+    entero ns;
+    ns.setvalor(valor + x.getvalor());
+    return ns;
+}
+entero entero :: restar(entero x)
+{
+    entero ns;
+    ns.setvalor(valor - x.getvalor());
+    return ns;
+}
+entero entero :: cambiarsigno()
+{
+    entero ns;
+    ns.setvalor(-valor);
+    return ns;
+}
+int main()
+{
+    entero n1, n2,ns ;
+    n1.setvalor(1);
+    n2.setvalor(2);
+    ns=n1.sumar(n2);
+    //cout<<ns.getvalor();
+    cout<<endl;
+    ns=n1.restar(n2);
+    //cout<<ns.getvalor();
+    ns=n1.cambiarsigno();
+    cout<<ns.getvalor();
+    return 0;
+}
+
