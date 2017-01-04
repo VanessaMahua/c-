@@ -155,3 +155,193 @@ int main()
     return 0;
 }
 
+
+#include <sstream> // bafern convierte el valor entero en string
+#include <iostream>
+
+using namespace std;
+class fraccion
+{
+    int num , den;
+    public:
+        fraccion (int,int);
+        fraccion sumar (fraccion);
+        string mostrar();
+        void simplificar(int, int);
+        int getnum();
+        int getden();
+
+};
+int fraccion:: getnum()
+{
+    return num;
+}
+int  fraccion:: getden()
+{
+    return den;
+}
+string fraccion:: mostrar()
+{
+    stringstream n ,d;
+    n<< num;
+    d<<den;
+    return n.str() + "/" + d.str();
+}
+fraccion:: fraccion(int x, int y)
+{
+    num=x;
+    den=y;
+}
+
+fraccion fraccion:: sumar (fraccion f)
+{
+    int n,d;
+    n= num*f.den + den*f.num;
+    d=den*f.den;
+    fraccion fsuma(n,d);
+    return fsuma;
+}
+void fraccion :: simplificar(int num ,int den)
+{
+
+    if(num<den)
+    {
+        for(int i=num; i>0 ; i--)
+        {
+            if(num%i ==0 && den%i==0)
+            {
+                num=num;
+                den=den;
+
+            }
+        }
+    }
+    else
+    {
+         for(int i=den; i>0 ; i--)
+        {
+            if(num%i ==0 && den%i==0)
+            {
+                num=num/i;
+                //cout<<num;
+                //cout<<endl;
+                den=den/i;
+
+
+            }
+        }
+    }
+    cout <<num << "/"<< den;
+}
+
+int main()
+{
+    fraccion f1(3,4),f2(5,3),f3(0,1),f4(12,4),f5(10,2);
+    cout<<"fraccion1 = "<<f1.mostrar()<<endl;
+    cout<<"fraccion2 = "<<f2.mostrar()<<endl;
+    f3=f1.sumar(f2);
+
+    cout <<"SUMA "<<f3.mostrar()<<endl;
+    f3.simplificar(f3.getnum(),f3.getden());
+    cout<<endl;
+   f4.simplificar(f4.getnum(),f4.getden());
+   cout<<endl;
+    f5.simplificar(f5.getnum(),f5.getden());
+}
+
+=================================================================
+#include <iostream>
+
+using namespace std;
+
+class Persona
+{
+    string dni, nombre;
+    int edad;
+public:
+    Persona(string,string,int);
+    Persona();
+    void setDni(string);
+    void setNombre(string);
+    void setEdad(string);
+    string getDni();
+    string getNombre();
+    int getEdad();
+    void mostrarDatos();
+    void ingresarDatos();
+    bool buscar( Persona *listaPersonas[], string dni);
+    };
+
+    Persona::Persona()
+    {
+        dni="";
+        nombre="";
+        edad=0;
+    }
+    Persona::Persona(string dni,string n,int e)
+    {
+        dni=dni;
+        nombre=n;
+        edad=e;
+    }
+    string Persona::getNombre()
+    {
+        return nombre;
+    }
+    string Persona::getDni()
+    {
+        return dni;
+    }
+    int Persona::getEdad()
+    {
+         return edad;
+    }
+void Persona::mostrarDatos()
+{
+    cout<<"Mi nombre es "<<getNombre()<<" y tengo "<<getEdad()<<" anhos"<<endl;
+}
+void Persona::ingresarDatos()
+{
+    cout<<"Nombre?";cin>>nombre;
+    cout<<"Dni?";cin>>dni;
+    cout<<"Edad?";cin>>edad;
+}
+bool  buscar( Persona *listaPersonas[], string dni)
+{
+
+    for (int i=0;i<3;i++)
+    {
+
+        if ( dni == listaPersonas[i]->getDni())
+        {
+            listaPersonas[i]->mostrarDatos();
+            return 1;
+        }
+        else
+            cout<<"plop";
+            return 0;
+    }
+}
+int main()
+{
+    string buscar_dni;
+    Persona p1("40405050","Luis Perez",21);
+    p1.mostrarDatos();
+    Persona *listaPersonas[10];
+    for(int i=0;i<3;i++)
+        listaPersonas[i]=new Persona();
+    for(int i=0;i<3;i++)
+        listaPersonas[i]->ingresarDatos();
+    for(int i=0;i<3;i++)
+        listaPersonas[i]->mostrarDatos();
+
+    cout<<"Dni a buscar?";cin>>buscar_dni;
+    buscar(listaPersonas,  buscar_dni);
+
+
+    return 0;
+}
+
+
+
+
