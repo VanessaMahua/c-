@@ -181,14 +181,12 @@ void libro::quitar_data(){
     cantidad_libro-=1;
     if (cantidad_libro<=0){
         disponible=false;
-    }
-}
+
 void libro::add_data(){
     cantidad_libro+=1;
     if (cantidad_libro<=0){
         disponible=false;
-    }
-}
+
 int libro::get_documento(){
     return documento::get_documento();
 }
@@ -211,8 +209,7 @@ void tesis::llenar_data()
     cin>>cantidad_tesis;
     if (cantidad_tesis>0){
         disponible=true;
-    }
-}
+
 void tesis::imprimir_data()
 {
     documento::imprimir_data();
@@ -222,14 +219,12 @@ void tesis::quitar_data(){
     cantidad_tesis-=1;
     if (cantidad_tesis<=0){
         disponible=false;
-    }
-}
+
 void tesis::add_data(){
     cantidad_tesis+=1;
     if (cantidad_tesis<=0){
         disponible=false;
-    }
-}
+ 
 int tesis::get_documento(){
     return documento::get_documento();
 }
@@ -312,9 +307,7 @@ void sistema::prestar(int user, int doc, int id_user, int id_doc){
                     cout<<"Usuario encontrado"<<endl;
                     prestar=true;
                     break;
-                }
-            }
-        }
+          
         else{
             if (user==2){
             for (int i=0;i<=actprofe;i++){
@@ -322,9 +315,7 @@ void sistema::prestar(int user, int doc, int id_user, int id_doc){
                     cout<<"Usuario encontrado"<<endl;
                     prestar=true;
                     break;
-                }
-            }}
-        }
+          
     if (prestar==false) cout<<"Usuario no encontrado, intente denuevo :3"<<endl;
     else{
         if (doc==1){
@@ -338,9 +329,7 @@ void sistema::prestar(int user, int doc, int id_user, int id_doc){
                                 listaalumno[j]->doc_user()[listaalumno[j]->get_pos()]=id_doc;
                                 listaalumno[j]->llebar();
                                 break;
-                            }
-                        }
-                    }
+                      
                     else{
                         if (user==2){
                         for (int j=0;j<=actprofe;j++){
@@ -348,13 +337,7 @@ void sistema::prestar(int user, int doc, int id_user, int id_doc){
                                 listaprofe[j]->doc_user()[listaprofe[j]->get_pos()]=id_doc;
                                 listaprofe[j]->llebar();
                                 break;
-                            }
-                        }}
-                    }
                     break;
-                }
-            }
-        }
         else{
             if (doc==2){
             for (int i=0;i<=acttesis;i++){
@@ -367,9 +350,7 @@ void sistema::prestar(int user, int doc, int id_user, int id_doc){
                                 listaalumno[j]->doc_user()[listaalumno[j]->get_pos()]=id_doc;
                                 listaalumno[j]->llebar();
                                 break;
-                            }
-                        }
-                    }
+                     
                     else{
                         if (user==2){
                         for (int j=0;j<=actprofe;j++){
@@ -377,17 +358,8 @@ void sistema::prestar(int user, int doc, int id_user, int id_doc){
                                 listaprofe[j]->doc_user()[listaprofe[j]->get_pos()]=id_doc;
                                 listaprofe[j]->llebar();
                                 break;
-                            }
-                        }}
-                    }
+                    
                     break;
-                }
-            }
-        }
-        }
-}
-}
-
 void sistema::doc_prestados(int tipo_user, int id_user){
     if (tipo_user==1){
             for (int i=0;i<=actalumno;i++){
@@ -396,9 +368,7 @@ void sistema::doc_prestados(int tipo_user, int id_user){
                     for (int z=0;z<listaalumno[i]->get_pos();z++){
                     cout<<listaalumno[i]->doc_user()[z]<<endl;}
                     break;
-                }
-            }
-        }
+         
         else
         {
             if (tipo_user==2)
@@ -413,12 +383,7 @@ void sistema::doc_prestados(int tipo_user, int id_user){
                         cout<<listaprofe[i]->doc_user()[z]<<endl;
                     }
                     break;
-                }
-            }
-            }
-        }
-
-}
+  
 void sistema::devolver(int user,int doc,int id_user,int id_doc)
 {
     bool prestar=false;
@@ -428,9 +393,7 @@ void sistema::devolver(int user,int doc,int id_user,int id_doc)
                     cout<<"Usuario encontrado"<<endl;
                     prestar=true;
                     break;
-                }
-            }
-        }
+         
         else{
             if (user==2){
             for (int i=0;i<=actprofe;i++){
@@ -438,9 +401,7 @@ void sistema::devolver(int user,int doc,int id_user,int id_doc)
                     cout<<"Usuario encontrado"<<endl;
                     prestar=true;
                     break;
-                }
-            }}
-        }
+        
     if (prestar==false) cout<<"Usuario no encontrado, intente denuevo :3"<<endl;
     else{
         if (doc==1){
@@ -454,9 +415,7 @@ void sistema::devolver(int user,int doc,int id_user,int id_doc)
                                 listaalumno[j]->doc_user()[listaalumno[j]->get_pos()]=id_doc;
                                 listaalumno[j]->llebar();
                                 break;
-                            }
-                        }
-                    }
+                   
                     else{
                         if (user==2){
                         for (int j=0;j<=actprofe;j++){
@@ -464,13 +423,7 @@ void sistema::devolver(int user,int doc,int id_user,int id_doc)
                                 listaprofe[j]->doc_user()[listaprofe[j]->get_pos()]=id_doc;
                                 listaprofe[j]->llebar();
                                 break;
-                            }
-                        }}
-                    }
                     break;
-                }
-            }
-        }
         else{
             if (doc==2){
             for (int i=0;i<=acttesis;i++){
@@ -483,9 +436,6 @@ void sistema::devolver(int user,int doc,int id_user,int id_doc)
                                 listaalumno[j]->doc_user()[listaalumno[j]->get_pos()]=id_doc;
                                 listaalumno[j]->llebar();
                                 break;
-                            }
-                        }
-                    }
                     else{
                         if (user==2){
                         for (int j=0;j<=actprofe;j++){
@@ -493,17 +443,7 @@ void sistema::devolver(int user,int doc,int id_user,int id_doc)
                                 listaprofe[j]->doc_user()[listaprofe[j]->get_pos()]=id_doc;
                                 listaprofe[j]->llebar();
                                 break;
-                            }
-                        }}
-                    }
                     break;
-                }
-            }
-        }
-        }
-}
-}
-
 int main()
 {
     int men,smen;
@@ -574,7 +514,6 @@ int main()
 
             case 5:
                     cout<<"Gracias por usar el sistema..."<<endl;
-        }
-    }
+    
     return 0;
 }
